@@ -1,0 +1,49 @@
+*{
+    margin: 0px;
+    padding: 0px;
+  }
+
+body {
+    display: flex;
+    justify-content: center;
+    background: #000;
+  }
+
+.container {
+    height: 768px;
+    width: 600px;
+    background: linear-gradient(#000000, #525252);
+    position: relative;
+    overflow: hidden;
+  }
+
+.waves {
+    position: absolute;
+    height: 100%;  
+    width: 100%;
+    bottom: 0;
+  }
+
+.wave {
+    width: 1000px;
+    height: 100%;
+    background: url("images/wave-1.png") no-repeat center bottom;
+    position: absolute;
+    animation: wave 9s ease-in-out alternate infinite;
+  }
+
+.wave:nth-child(2) {
+    animation-delay: 15s;
+  }
+  
+@keyframes wave{
+    0%{
+      transform: translate(0px, 0px);
+    }
+    50%{
+      transform: translate(-55px, 5px);
+    }
+    100%{
+      transform: translate(-70px, 15px);
+    }
+  }
