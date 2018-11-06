@@ -92,6 +92,32 @@ body {
   animation: blowChain linear 1s 4.5s 1 forwards;
 }
 
+.blowing .popup { 
+  animation: popup 3s 5s linear;
+}
+
+.popup {
+  position: absolute;
+  border-radius: 50%;
+  background-color: white;
+  color: #000;
+  text-align: center;
+  top: 20%;
+  left: 40%;
+  width: 25%;
+  height: 20%;
+  opacity: 0;
+}
+
+.popup p {
+  width: 60%;
+  font: 20px 'Arial';
+  text-align: center;
+  color: black;
+  margin-left: 20%;
+  margin-top: 15%;
+}
+
 .blowing #bomb {
   animation: pulse ease-in-out 1s 5,
              blow linear 1s 4.5s 1 forwards;
@@ -131,7 +157,7 @@ body {
 
 @keyframes stars {
   0% {
-   opacity: 0.5;
+  opacity: 0.5;
   }
   100% {
   opacity: 1;
@@ -207,3 +233,17 @@ body {
   }
 } 
 
+@keyframes popup {
+  0% {
+    opacity: 0; 
+    transform: scale(0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+}
