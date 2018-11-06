@@ -1,57 +1,196 @@
 *{
-    margin: 0px;
-    padding: 0px;
-  }
+  margin: 0px;
+  padding: 0px;
+}
 
 body {
-    display: flex;
-    justify-content: center;
-    background: radial-gradient(40% 50%, #082252, #000);
-  }
+  background: radial-gradient(40% 50%, #082252, #000);
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
 
-.container {
-    height: 768px;
-    width: 1024px;
-    background: url("images/stars.png") no-repeat;
-    position: relative;
-    overflow: hidden;
-  }
-
-.wrapper {
+#contentArea {
+  position: relative;
+  width: 1024px;
+  height: 768px;
+  overflow: hidden;
   background: url("images/northern-lights.png") no-repeat;
 }
 
+.stars {
+  width: 100%;
+  height: 100%;
+  background: url("images/stars.png") no-repeat;
+  animation: stars 2s ease-out infinite alternate;
+}
+
+.cat-wrapper {
+  position: absolute;
+  width: 127px;
+  height: 158px;
+  top: 340px;
+  left: 570px;
+  animation: cat 10s linear infinite;
+}
+
+.cat {
+  position: relative;
+  height: 100%;
+  background: url("images/cat.png") 0 0/contain no-repeat;
+}
+
+.cat:after {
+  content: "";
+  display: block;
+  position: relative;
+  top: 135px;
+  left: 55px;
+  width: 30px;
+  height: 60px;
+  background: url("images/tail.png") 0 0/contain no-repeat;
+  z-index: -1;
+  transform-origin: top;
+  animation: tail 2s ease-in-out alternate infinite;
+}
+
+.blowing .cat {
+  transform: translateX(500%);
+  transition: transform 1.5s linear 5s;
+}
+
+.bomb-wrapper {
+  position: absolute;
+  width: 95px;
+  height: 90px;
+  top: 245px;
+  left: 245px;
+  animation: bomb 3s linear alternate infinite;
+}
+
+#bomb {
+  position: relative;
+  height: 100%;
+  background: url("images/bomb.png") 0 0/contain no-repeat;
+}
+
+#bomb:before {
+  content: "";
+  display: block;
+  position: relative;
+  top: 5px;
+  left: 15px;
+  width: 70px;
+  height: 400px;
+  background: url("images/chain.png") 0 0/contain no-repeat;
+  z-index: -1;
+  transform-origin: top;
+  animation: chain 3s ease-in-out alternate infinite;
+}
+
+.blowing #bomb {
+  animation: pulse ease-in-out 1s 5,
+             blow linear 2s 4.5s 1 forwards;
+}
+
 .waves-container {
-    position: absolute;
-    height: 100%;  
-    width: 100%;
-    bottom: 0;
-  }
+  position: absolute;
+  width: 100%;
+  height: 65%;
+  bottom: 0;
+}
 
 .wave {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image: url("images/wave-1.png");
-    background-size: 100%;
-    background-position-x: 0;
-    background-position-y: 100%;
-    background-repeat: repeat-x;
-    animation: wave 7s linear infinite;
-  }
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  background: url("images/wave-1.png") 100% 0/contain repeat-x;
+  animation: wave 7s linear infinite;
+}
 
 .wave:nth-child(2) {
-    animation-delay: 2s;
-  }
+  animation-delay: 2s;
+}
   
-@keyframes wave{
-    0%{
-      background-position-x: 0;
-    }
-    50%{
-      background-position-x: 5100px;
-    }
-    100%{
-      background-position-x: 0;
-    }
+@keyframes wave {
+  0%{
+    background-position-x: 0;
   }
+  50%{
+    background-position-x: 5100px;
+  }
+  100%{
+    background-position-x: 0;
+  }
+}
+
+@keyframes stars {
+  0% {
+   opacity: 0.5;
+  }
+  100% {
+  opacity: 1;
+ }
+}
+
+@keyframes cat {
+  0% {
+    transform: rotate(0) translateX(150px) rotate(0); 
+  }
+  100% {
+    transform: rotate(360deg) translate(150px) rotate(-360deg);
+  }  
+}
+
+@keyframes tail {
+  0% {
+    transform: rotateZ(25deg); 
+  }
+  100% {
+    transform: rotateZ(-25deg);
+  }  
+}
+
+@keyframes bomb {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(7deg);
+  }
+}
+
+@keyframes chain {
+  0% {
+    transform: rotate(-3deg);
+  }
+  100% {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes pulse {
+  to {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes blow {
+  0% {
+    transform: scale(3.5);
+  }
+  35% {
+    transform: scale(2.5);
+  }
+  65% {
+    background-image: url(images/boom-effect.png);
+  }
+  85% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
